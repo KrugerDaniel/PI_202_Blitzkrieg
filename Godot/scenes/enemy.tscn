@@ -19,7 +19,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.161, 9.84801 )
+extents = Vector2( 3.45828, 9.73002 )
 
 [sub_resource type="Image" id=8]
 data = {
@@ -63,18 +63,17 @@ initial_velocity = 45.98
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=[
-"enemy",
-]]
+[node name="enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1, -7 )
 frames = SubResource( 1 )
-animation = "stoped"
+animation = "run"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -1.1892, -0.445953 )
+position = Vector2( -1.13021, -0.681922 )
 shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -96,13 +95,13 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 7 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
 
-[node name="AreaEnemy" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEnemy"]
+modulate = Color( 0.054902, 0.00392157, 0.00392157, 1 )
 position = Vector2( -1.1892, -0.445953 )
 shape = SubResource( 2 )
-disabled = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

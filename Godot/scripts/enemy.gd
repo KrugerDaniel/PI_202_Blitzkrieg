@@ -47,11 +47,11 @@ func _physics_process(delta):
 				$AnimatedSprite.flip_h = true
 			else:
 				$AnimatedSprite.flip_h = false
-			
+				
 		"""if get_slide_count() > 0:
 			for i in range(get_slide_count()):
-				if ""player"" in get_slide_collision(i).collider.name:
-					get_slide_collision(i).collider.damage()"""
+				if "'player'" in get_slide_collision(i).collider.name:
+					get_slide_collision(i).collider.received_damage()"""
 
 func _on_Timer_timeout():
 	queue_free()

@@ -11,7 +11,7 @@
 script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 107.98, 181.507 )
+position = Vector2( 31.98, 181.507 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -32,7 +32,7 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 309.723, 181.303 )
+position = Vector2( 25.4193, 181.303 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

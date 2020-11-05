@@ -75,16 +75,14 @@ func _physics_process(delta):
 			
 		movimento = move_and_slide(movimento, UP)
 		
-		if get_slide_count() > 0:
-			for i in range(get_slide_count()):
-				if "KinematicBody2D" in get_slide_collision(i).collider.name:
-					if $TimerInvencible.time_left == 0:
-						$TimerInvencible.start()
-						hp -= 1
-						emit_signal("damage", 1)
-		
 		if hp <= 0:
 			dead()
+			
+func received_damage():
+	if $TimerInvencible.time_left == 0:
+		$TimerInvencible.start()
+		hp -= 1
+		emit_signal("damage", hp)
 			
 func dead():
 	is_dead = true
@@ -96,3 +94,7 @@ func dead():
 
 func _on_Timer_timeout():
 	timeout = get_tree().reload_current_scene()
+
+
+func _on_Area2D_area_entered(_area):
+	received_damage()

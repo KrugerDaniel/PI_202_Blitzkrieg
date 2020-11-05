@@ -20,4 +20,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Area2D_body_entered(body):
 	if "KinematicBody2D" in body.name:
 		body.dead()
+	if "player" in body.name:
+		body.received_damage()
 	queue_free()
