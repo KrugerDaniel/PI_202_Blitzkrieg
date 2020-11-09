@@ -32,7 +32,7 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 25.4193, 181.303 )
+position = Vector2( 114.019, 182.805 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
