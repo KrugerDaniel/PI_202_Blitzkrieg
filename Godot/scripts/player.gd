@@ -93,8 +93,7 @@ func dead():
 	$Timer.start()
 
 func _on_Timer_timeout():
-	timeout = get_tree().reload_current_scene()
-
+	timeout = get_tree().change_scene("res://scenes/TitleScreen.tscn")
 
 func _on_Area2D_area_entered(_area):
 	received_damage()
