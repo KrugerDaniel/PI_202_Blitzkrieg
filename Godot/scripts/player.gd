@@ -10,7 +10,6 @@ const SHOTUPDOWN = preload("res://scenes/shotUpDown.tscn")
 var movimento = Vector2()
 var is_dead = false
 var hp = 3
-var colisorDano = false
 var timeout
 
 signal damage
@@ -90,6 +89,7 @@ func dead():
 	$AnimatedSprite.visible = false
 	$Particles2D.emitting = true
 	$CollisionShape2D.set_deferred("disabled", true)
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	$Timer.start()
 
 func _on_Timer_timeout():

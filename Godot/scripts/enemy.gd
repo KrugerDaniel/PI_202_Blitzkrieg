@@ -8,9 +8,6 @@ var velocity = Vector2()
 var direction = 1
 var is_dead = false
 
-var areaDetectavel = false
-var objectPlayer 
-
 func _ready():
 	pass
 	
@@ -19,6 +16,7 @@ func dead():
 	velocity = Vector2(0, 0)
 	$AnimatedSprite.visible = false
 	$Particles2D.emitting = true
+	$CollisionShape2D.set_deferred("disabled", true)
 	$Timer.start()
 
 func _physics_process(delta):
@@ -47,11 +45,6 @@ func _physics_process(delta):
 				$AnimatedSprite.flip_h = true
 			else:
 				$AnimatedSprite.flip_h = false
-				
-		"""if get_slide_count() > 0:
-			for i in range(get_slide_count()):
-				if "'player'" in get_slide_collision(i).collider.name:
-					get_slide_collision(i).collider.received_damage()"""
 
 func _on_Timer_timeout():
 	queue_free()

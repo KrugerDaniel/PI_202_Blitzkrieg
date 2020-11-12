@@ -9,18 +9,18 @@
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "NoMoreHeart",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "FullHeart",
+"name": "NoMoreHeart",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "MiddleHeart",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "FullHeart",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 1 ) ],
