@@ -11,6 +11,7 @@ var movimento = Vector2()
 var is_dead = false
 var hp = 3
 var timeout
+var dir = 1
 
 signal damage
 
@@ -26,6 +27,7 @@ func _physics_process(delta):
 			
 		if Input.is_action_pressed("ui_right"):
 			movimento.x = VELOCITY
+			dir = 1
 			if sign($PositionLado.position.x) == -1:
 				$PositionLado.position.x *= -1
 			if sign($PositionUP.position.x) == 1:
@@ -38,6 +40,7 @@ func _physics_process(delta):
 				$AnimatedSprite.flip_h = false
 		elif Input.is_action_pressed("ui_left"):
 			movimento.x = -VELOCITY
+			dir = -1
 			if sign($PositionLado.position.x) == 1:
 				$PositionLado.position.x *= -1
 			if sign($PositionUP.position.x) == -1:
@@ -73,15 +76,25 @@ func _physics_process(delta):
 			movimento.y = JUMP_VELOCITY
 			
 		movimento = move_and_slide(movimento, UP)
-		
-		if hp <= 0:
-			dead()
 			
 func received_damage():
-	if $TimerInvencible.time_left == 0:
-		$TimerInvencible.start()
-		hp -= 1
-		emit_signal("damage", hp)
+	$TimerInvencible.start()
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+		
+	if dir == -1:
+		movimento.x = 500
+	else:
+		movimento.x = -500
+	movimento.y = -350
+	movimento = move_and_slide(movimento, UP)
+		
+	hp -= 1
+	emit_signal("damage", hp)
+		
+	if hp <= 0:
+		dead()
+	else:
+		movimento = move_and_slide(movimento, UP)
 			
 func dead():
 	is_dead = true
@@ -97,3 +110,6 @@ func _on_Timer_timeout():
 
 func _on_Area2D_area_entered(_area):
 	received_damage()
+
+func _on_TimerInvencible_timeout():
+	$Area2D/CollisionShape2D.set_deferred("disabled", false)

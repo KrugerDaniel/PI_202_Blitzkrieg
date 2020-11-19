@@ -10,16 +10,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": false,
-"name": "stoped_up",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "run_up",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "stoped",
@@ -29,10 +19,20 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "stoped_up",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "run_up",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.32201, 9.8681 )
+extents = Vector2( 3.41949, 9.64519 )
 
 [sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 1
@@ -63,7 +63,7 @@ animation = "run_up"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.00674796, -0.463515 )
+position = Vector2( 0.0951364, -0.627051 )
 shape = SubResource( 2 )
 
 [node name="PositionUP" type="Position2D" parent="."]
@@ -79,8 +79,6 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 3 )
 
-[node name="Tween" type="Tween" parent="."]
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -91,17 +89,21 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 limit_left = 0
-limit_top = 0
-limit_right = 1260
-limit_bottom = 220
+limit_top = -5000
+limit_right = 50000
+limit_bottom = 50000
 smoothing_enabled = true
 smoothing_speed = 7.0
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
+visible = false
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 4 )
+
+[node name="TimerShot" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimerInvencible" to="." method="_on_TimerInvencible_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
