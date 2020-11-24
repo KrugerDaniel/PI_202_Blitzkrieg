@@ -101,10 +101,14 @@ func _on_Detectar_player_body_exited(_body):
 
 func fire():
 	var shot = SHOT.instance()
-	if sign($Position2D.position.x) == 1:
-		shot.set_shot_direction(1)
-	else:
+	if dir == -1:
+		if sign($Position2D.position.x) == 1:
+			$Position2D.position.x *= -1
 		shot.set_shot_direction(-1)
+	else:
+		if sign($Position2D.position.x) == -1:
+			$Position2D.position.x *= -1
+		shot.set_shot_direction(1)
 	shot.shot_enemy()
 	shot.position = $Position2D.global_position
 	get_parent().add_child(shot)

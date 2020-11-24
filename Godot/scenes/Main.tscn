@@ -561,7 +561,7 @@ margin_right = 0.707092
 margin_bottom = 1.41422
 
 [node name="enemyStrong" parent="." instance=ExtResource( 18 )]
-position = Vector2( 222.73, 157.817 )
+position = Vector2( 112.659, 175.837 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 19 )]
 position = Vector2( 247.664, 168.115 )

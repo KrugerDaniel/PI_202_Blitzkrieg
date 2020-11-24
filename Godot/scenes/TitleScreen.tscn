@@ -14,14 +14,14 @@ animations = [ {
 "name": "Cont",
 "speed": 0.0
 }, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "Jogar",
+"speed": 0.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "Creditos",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "Controles",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -29,9 +29,9 @@ animations = [ {
 "name": "Sair",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": false,
-"name": "Jogar",
+"name": "Controles",
 "speed": 0.0
 } ]
 
