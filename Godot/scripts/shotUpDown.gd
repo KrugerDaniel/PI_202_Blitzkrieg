@@ -17,4 +17,4 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_shotUpDown_body_entered(body):
 	if "KinematicBody2D" in body.name:
 		body.dead()
-	queue_free()
+		queue_free()
