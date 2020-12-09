@@ -93,8 +93,6 @@ func received_damage():
 		
 	if hp <= 0:
 		dead()
-	else:
-		movimento = move_and_slide(movimento, UP)
 			
 func dead():
 	is_dead = true

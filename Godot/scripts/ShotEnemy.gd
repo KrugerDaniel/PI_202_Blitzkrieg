@@ -20,16 +20,10 @@ func _physics_process(delta):
 	velocity.x = speed * delta * direction
 	translate(velocity)
 	
-func _on_VisibilityNotifier2D_screen_exited():
+func _on_VisibilityNotifier2D2_screen_exited():
 	queue_free()
 
-func _on_Area2D_body_entered(body):
-	if "enemyStrong" in body.name:
-		body.received_damage()
-	elif "KinematicBody2D" in body.name:
-		body.dead()
-	elif "boss" in body.name:
-		body.received_damage()
-	elif "player" in body.name:
-		body.received_damage()
-	queue_free()
+
+func _on_ShotEnemy_body_entered(body):
+	if "player" in body.name:
+		body.received_damage() 

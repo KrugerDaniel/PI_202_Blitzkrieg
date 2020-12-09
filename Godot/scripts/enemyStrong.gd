@@ -5,7 +5,7 @@ onready var Player = get_parent().get_node("player")
 const GRAVITY = 800
 const SPEED = 45
 const FLOOR = Vector2(0, -1)
-const SHOT = preload("res://scenes/shot.tscn")
+const SHOT = preload("res://scenes/ShotEnemy.tscn")
 
 var velocity = Vector2()
 var is_dead = false
@@ -26,8 +26,11 @@ func dead():
 	is_dead = true
 	velocity = Vector2(0, 0)
 	$AnimatedSprite.visible = false
+	$AnimatedSprite2.visible = false
 	$Particles2D.emitting = true
 	$CollisionShape2D.set_deferred("disabled", true)
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	$TimerShot.stop()
 	$Timer.start()
 	
 func set_dir(target_dir):
@@ -57,31 +60,39 @@ func _physics_process(delta):
 			velocity.x = SPEED * dir
 		
 			if is_on_wall():
+				if dir == 1:
+					print("Oi")
+				else:
+					print("Olá")
 				dir *= -1
+				$RayCast2D.position.x *= -1
+				$Position2D.position.x *= -1
 				
 			if not $RayCast2D.is_colliding():
 				dir *= -1
 				$RayCast2D.position.x *= -1
 				$Position2D.position.x *= -1
-				
+			
 			if dir != sign($RayCast2D.position.x):
 				$RayCast2D.position.x *= -1
 				$Position2D.position.x *= -1
-				
+			
 		if dir == -1:
+			print(1)
+			if sign($Position2D.position.x) == 1:
+				$RayCast2D.position.x *= -1
+				$Position2D.position.x *= -1
 			$AnimatedSprite2.play("Run")
 			$AnimatedSprite.visible = false
 			$AnimatedSprite2.visible = true
-			if sign($Particles2D.position.x) == 1:
+		else:
+			print(2)
+			if sign($Position2D.position.x) == -1:
 				$RayCast2D.position.x *= -1
 				$Position2D.position.x *= -1
-		else:
 			$AnimatedSprite.play("Run")
 			$AnimatedSprite2.visible = false
 			$AnimatedSprite.visible = true
-			if sign($Particles2D.position.x) == -1:
-				$RayCast2D.position.x *= -1
-				$Position2D.position.x *= -1
 		
 		velocity = move_and_slide(velocity, FLOOR)
 					
@@ -94,7 +105,8 @@ func _on_Timer_timeout():
 	queue_free()
 
 func _on_Detectar_player_body_entered(_body):
-	player_close = true
+	pass
+	#player_close = true
 
 func _on_Detectar_player_body_exited(_body):
 	player_close = false

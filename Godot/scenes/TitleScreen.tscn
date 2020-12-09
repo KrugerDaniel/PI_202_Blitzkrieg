@@ -19,11 +19,6 @@ animations = [ {
 "name": "Jogar",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "Sair",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "Creditos",
@@ -32,6 +27,11 @@ animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "Controles",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "Sair",
 "speed": 0.0
 } ]
 
